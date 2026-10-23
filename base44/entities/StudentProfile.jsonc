@@ -1,0 +1,117 @@
+{
+  "name": "StudentProfile",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Student's full name"
+    },
+    "class_level": {
+      "type": "string",
+      "enum": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "description": "Current class in school"
+    },
+    "board": {
+      "type": "string",
+      "enum": [
+        "CBSE",
+        "State Board"
+      ],
+      "description": "Board of education"
+    },
+    "state": {
+      "type": "string",
+      "description": "Indian state"
+    },
+    "school": {
+      "type": "string",
+      "description": "School name (optional)"
+    },
+    "language": {
+      "type": "string",
+      "description": "Preferred language for explanations"
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "School learning",
+        "Board exam preparation",
+        "JEE preparation",
+        "NEET preparation",
+        "Other competitive exams"
+      ],
+      "description": "Main learning goal"
+    },
+    "stream": {
+      "type": "string",
+      "enum": [
+        "MPC",
+        "BiPC",
+        "Commerce",
+        "Other"
+      ],
+      "description": "Stream, for classes 11 and 12"
+    },
+    "daily_study_minutes": {
+      "type": "number",
+      "description": "Preferred daily study time in minutes"
+    }
+  },
+  "required": [
+    "full_name",
+    "class_level",
+    "board",
+    "state",
+    "language",
+    "goal"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
