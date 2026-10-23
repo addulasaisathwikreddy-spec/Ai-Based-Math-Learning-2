@@ -1,0 +1,103 @@
+{
+  "name": "TestAttempt",
+  "type": "object",
+  "properties": {
+    "class_level": {
+      "type": "string",
+      "description": "Class the attempts belongs to"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Topic practised"
+    },
+    "total_questions": {
+      "type": "number"
+    },
+    "correct_count": {
+      "type": "number"
+    },
+    "score_percent": {
+      "type": "number"
+    },
+    "duration_seconds": {
+      "type": "number"
+    },
+    "demo_mode": {
+      "type": "boolean",
+      "description": "True when questions came from the offline bank"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "correct_index": {
+            "type": "number"
+          },
+          "selected_index": {
+            "type": "number"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "topic",
+    "total_questions",
+    "correct_count",
+    "score_percent"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
