@@ -1,0 +1,76 @@
+{
+  "name": "Question",
+  "type": "object",
+  "properties": {
+    "class_level": {
+      "type": "string",
+      "enum": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "description": "Class this question belongs to"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Chapter or topic name"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "The question text"
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "correct_index": {
+      "type": "number",
+      "description": "Index of the correct option (0-3)"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Short step-by-step explanation"
+    }
+  },
+  "required": [
+    "class_level",
+    "topic",
+    "difficulty",
+    "prompt",
+    "options",
+    "correct_index",
+    "explanation"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
