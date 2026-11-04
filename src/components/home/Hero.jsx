@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import HeroAtmosphere from "@/components/home/HeroAtmosphere";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 const skills = [
@@ -13,6 +14,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="paper-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+      <HeroAtmosphere />
       <div className="relative mx-auto grid max-w-6xl gap-14 px-4 py-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-24">
         <div className="animate-rise">
           <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
@@ -27,7 +29,7 @@ export default function Hero() {
             language, and builds practice that closes the gap — long before the exam does.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg" className="h-12 rounded-full px-7">
+            <Button asChild size="lg" className="lift-btn h-12 rounded-full px-7">
               <Link to="/register?returnTo=/onboarding">
                 Take the free diagnostic
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -47,7 +49,7 @@ export default function Hero() {
 
         <div className="animate-rise-slow relative">
           <div className="absolute -inset-6 rounded-[2.5rem] bg-secondary/70 blur-2xl" aria-hidden="true" />
-          <div className="relative rounded-[1.75rem] border border-border bg-card p-6 shadow-[0_30px_70px_-40px_rgba(20,25,45,0.45)]">
+          <div className="lift-card relative rounded-[1.75rem] border border-border bg-card p-6 shadow-[0_30px_70px_-40px_rgba(20,25,45,0.45)]">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Diagnostic</p>
@@ -92,3 +94,5 @@ export default function Hero() {
     </section>
   );
 }
+           
+          
