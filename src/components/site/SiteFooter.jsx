@@ -20,6 +20,8 @@ export default function SiteFooter() {
           <Link to="/login?returnTo=/dashboard" className="hover:text-foreground">Log in</Link>
           <Link to="/register?returnTo=/onboarding" className="hover:text-foreground">Create account</Link>
           <a href="#classes" className="hover:text-foreground">Syllabus</a>
+          <Link to="/privacy" className="hover:text-foreground">Privacy policy</Link>
+          <Link to="/cookies" className="hover:text-foreground">Cookie policy</Link>
         </div>
       </div>
       <div className="border-t border-border/60 px-4 py-4 text-center text-xs text-muted-foreground">
@@ -28,3 +30,4 @@ export default function SiteFooter() {
     </footer>
   );
 }
+       
