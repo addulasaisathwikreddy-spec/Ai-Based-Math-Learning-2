@@ -20,7 +20,7 @@ export default function ClassRail() {
             <Link
               key={level}
               to="/register?returnTo=/onboarding"
-              className="group rounded-2xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md"
+              className="lift-card group rounded-2xl border border-border bg-background p-5 hover:border-accent/40"
             >
               <div className="flex items-start justify-between">
                 <span className="font-display text-3xl">{level}</span>
@@ -36,3 +36,4 @@ export default function ClassRail() {
     </section>
   );
 }
+       
