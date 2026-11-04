@@ -4,7 +4,7 @@ An AI-based mathematics learning platform with diagnostic tests, personalized pr
 
 **Ganita** is a web app that helps school students in Classes 6 to 12 learn and practise mathematics in a simple, interactive way.
 
-🔗 **Live Demo:** https://math-industrious-genius-path.base44.app
+🔗 **URL**:https://math-industrious-genius-path.base44.app
 
 ---
 
@@ -29,43 +29,9 @@ An AI-based mathematics learning platform with diagnostic tests, personalized pr
 | Hosting | Base44 |
 | Version control | Git and GitHub |
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or later)
-- npm
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
-
-# 2. Go into the project folder
-cd <your-repo-name>
-
-# 3. Install dependencies
-npm install
-
-# 4. Start the development server
-npm run dev
-```
-
-Then open the local address shown in your terminal (usually `http://localhost:5173`).
 
 ---
 
-## 📂 Project Structure
-
-```
-src/
-├── pages/         # App pages (Home, Dashboard, Privacy Policy, etc.)
-├── components/    # Reusable components (CookieConsent, CustomCursor, etc.)
-├── api/           # Data and backend connection
-└── ...
-```
 
 [Adjust to match your actual folders.]
 
@@ -74,5 +40,3 @@ src/
 ## 🔄 Working with Base44 and GitHub
 
 This project was generated with Base44 and is synced with GitHub.
-
-- Changes made in
