@@ -8,6 +8,8 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Home from '@/pages/Home';
+import CookiePolicy from '@/pages/CookiePolicy';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -47,6 +49,8 @@ const AuthenticatedApp = () => {
     <>
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/cookies" element={<CookiePolicy />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -87,3 +91,4 @@ function App() {
 }
 
 export default App
+ 
