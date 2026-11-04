@@ -1,0 +1,78 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Cookie, ShieldCheck, Settings2 } from "lucide-react";
+import LegalLayout, { LegalSection } from "@/components/site/LegalLayout";
+import { Button } from "@/components/ui/button";
+
+export default function CookiePolicy() {
+  return (
+    <LegalLayout
+      title="Cookie Policy"
+      intro="A plain-language explanation of the cookies Ganita uses, why we use them, and how you stay in control."
+      updated="4 November 2026"
+    >
+      <LegalSection
+        icon={Cookie}
+        title="1. What are cookies?"
+        paragraphs={[
+          "Cookies are small text files that a website stores in your browser. They let the site remember who you are between page loads — for example, keeping you signed in while you move from your dashboard to a practice set.",
+          "We also use your browser's local storage for the same purpose: keeping your sign-in session and your interface preferences available.",
+        ]}
+      />
+
+      <LegalSection
+        icon={ShieldCheck}
+        title="2. Cookies we use"
+        paragraphs={[
+          "We only use cookies that are needed to run Ganita properly. We do not use advertising cookies, we do not build advertising profiles of students, and we never sell data to third parties.",
+        ]}
+        list={[
+          {
+            label: "Sign-in and session",
+            text: "Keeps you logged in so your practice sets, progress reports and chat history stay attached to your account. Without it you would have to sign in again on every page.",
+          },
+          {
+            label: "Security",
+            text: "Helps protect your account against fraudulent sign-ins and keeps your session valid only for as long as it should be.",
+          },
+          {
+            label: "Preferences",
+            text: "Remembers small choices such as your selected class or interface settings so the site feels the same the next time you visit.",
+          },
+        ]}
+      />
+
+      <LegalSection
+        icon={Settings2}
+        title="3. Managing cookies"
+        paragraphs={[
+          "You can delete or block cookies in your browser settings at any time. Every major browser lets you review stored cookies, remove them, and refuse new ones.",
+          "Please note: because the sign-in session is stored in a cookie, blocking cookies will sign you out and prevent you from using features that need an account, such as saved practice history or the AI study buddy's saved conversations.",
+        ]}
+      />
+
+      <LegalSection
+        icon={ShieldCheck}
+        title="4. Third-party services"
+        paragraphs={[
+          "Authentication, hosting and file storage are handled by our platform provider so your account and uploaded images stay private to you. These services only receive the cookie and session data needed to deliver that function — they are not used to advertise to you.",
+        ]}
+      >
+        <div className="mt-6 rounded-2xl border border-border bg-secondary/40 p-6 sm:p-8">
+          <h2 className="font-display text-xl tracking-tight">Questions?</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            If you would like to know more about how your data is handled, write to the Ganita team and we will walk you
+            through it. See also our{" "}
+            <Link to="/privacy" className="font-medium text-foreground underline underline-offset-4">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+          <Button asChild className="mt-5">
+            <Link to="/">Return to home</Link>
+          </Button>
+        </div>
+      </LegalSection>
+    </LegalLayout>
+  );
+}
