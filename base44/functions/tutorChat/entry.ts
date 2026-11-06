@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
+import { generate, filePart } from '../../shared/gemini.ts';
 
 const MAX_MESSAGES = 24;
 const MAX_CONTENT = 4000;
@@ -59,12 +60,22 @@ export default async function (req) {
       history,
     ].filter(Boolean);
 
-    const result = await base44.asServiceRole.integrations.Core.InvokeLLM({
-      prompt: promptParts.join('\n'),
-      ...(imageUrls.length ? { file_urls: imageUrls } : {}),
-    });
+    const parts = [{ text: promptParts.join('\n') }];
 
-    const reply = typeof result === 'string' ? result.trim() : '';
+    if (imageUrls.length) {
+      const fetched = await Promise.allSettled(imageUrls.map((url) => filePart(url)));
+      const usable = fetched.filter((r) => r.status === 'fulfilled').map((r) => r.value);
+      if (!usable.length) {
+        return Response.json(
+          { error: 'I could not open that image. Please try attaching it again.' },
+          { status: 502 }
+        );
+      }
+      parts.push(...usable);
+    }
+
+    const reply = await generate(parts, { temperature: 0.6, maxOutputTokens: 3072 });
+
     if (!reply) {
       return Response.json(
         { error: 'The tutor could not answer that. Please try again.' },
@@ -80,3 +91,5 @@ export default async function (req) {
     );
   }
 }
+   
+  
