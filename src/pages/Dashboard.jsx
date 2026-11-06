@@ -64,7 +64,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+      <section className="rounded-3xl border border-border bg-gradient-to-br from-brand-saffron/10 via-card to-brand-indigo/10 p-6 sm:p-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
