@@ -37,6 +37,11 @@ module.exports = {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
+  			brand: {
+  				saffron: 'hsl(var(--brand-saffron))',
+  				indigo: 'hsl(var(--brand-indigo))',
+  				teal: 'hsl(var(--brand-teal))'
+  			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
