@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
+import { generateJson } from '../../shared/gemini.ts';
 
 const MAX_COUNT = 10;
 
@@ -91,9 +92,9 @@ export default async function (req) {
         'Respond with JSON only.',
       ].join('\n');
 
-      const result = await base44.asServiceRole.integrations.Core.InvokeLLM({
-        prompt,
-        response_json_schema: {
+      const result = await generateJson(
+        [{ text: prompt }],
+        {
           type: 'object',
           properties: {
             questions: {
@@ -112,7 +113,8 @@ export default async function (req) {
           },
           required: ['questions'],
         },
-      });
+        { temperature: 1.0 }
+      );
 
       const raw = Array.isArray(result?.questions) ? result.questions : [];
       const valid = raw.filter(isValidQuestion).map(normalize).slice(0, count);
@@ -130,3 +132,6 @@ export default async function (req) {
     return Response.json({ error: error.message }, { status: 500 });
   }
 }
+
+
+                 
