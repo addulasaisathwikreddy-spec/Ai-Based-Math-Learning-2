@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
+import { generateJson } from '../../shared/gemini.ts';
 
 function fallbackInsight(topic, correct, total, missed) {
   const percent = total > 0 ? Math.round((correct / total) * 100) : 0;
@@ -52,9 +53,9 @@ export default async function (req) {
         'Respond with JSON only.',
       ].join('\n');
 
-      const result = await base44.asServiceRole.integrations.Core.InvokeLLM({
-        prompt,
-        response_json_schema: {
+      const result = await generateJson(
+        [{ text: prompt }],
+        {
           type: 'object',
           properties: {
             insight: { type: 'string' },
@@ -62,7 +63,8 @@ export default async function (req) {
           },
           required: ['insight', 'tips'],
         },
-      });
+        { maxOutputTokens: 2048 }
+      );
 
       const insight = typeof result?.insight === 'string' ? result.insight.trim() : '';
       const tips = Array.isArray(result?.tips) ? result.tips.filter((t) => typeof t === 'string').slice(0, 3) : [];
@@ -79,3 +81,4 @@ export default async function (req) {
     return Response.json({ error: error.message }, { status: 500 });
   }
 }
+
